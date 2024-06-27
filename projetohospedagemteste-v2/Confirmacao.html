@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de Reserva</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="assets/logo.png" alt="logo">
+            </div>
+            <nav class="nav">
+                <ul class="nav-lista left">
+                    <li>
+                        <a href="./index.html" class="nav-lista-link">Home</a>
+                    </li>
+                    <li>
+                        <a href="./acomodacoes.html" class="nav-lista-link">Acomodações</a>
+                    </li>
+                    <li>
+                        <a href="./reserva.html" class="nav-lista-link">Reserve</a>
+                    </li>
+                    <li>
+                        <a href="" class="nav-lista-link">Contato</a>
+                    </li>
+                </ul>
+                <ul class="nav-lista right">
+                    <li>
+                        <a href="./login.html" class="nav-lista-link right">Login</a>
+                    </li>
+                    <li>
+                        <a href="./cadastro.html" class="nav-lista-link right">Cadastre-se</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="reserva">
+            <h2>Reserva Concluída com Sucesso!</h2>
+            <p>Sua reserva foi confirmada para o período de:</p>
+            <p><strong>Check-in:</strong> <span id="checkin-confirmado"></span></p>
+            <p><strong>Check-out:</strong> <span id="checkout-confirmado"></span></p>
+        </div>
+        
+    </div>
+
+    <script>
+        // Pega os parâmetros da URL para exibir as datas confirmadas
+        const urlParams = new URLSearchParams(window.location.search);
+        const checkin = urlParams.get('checkin');
+        const checkout = urlParams.get('checkout');
+
+        // Exibe as datas confirmadas na página
+        document.getElementById('checkin-confirmado').textContent = checkin;
+        document.getElementById('checkout-confirmado').textContent = checkout;
+    </script>
+</body>
+</html>
