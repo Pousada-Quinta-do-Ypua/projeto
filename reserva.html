@@ -29,7 +29,7 @@
                         <a href="" class="nav-lista-link">Contato</a>
                     </li>
                 </ul>
-                <ul class="nav-lista right">
+                <ul class="nav-lista right" id="user-nav">
                     <li>
                         <a href="" class="nav-lista-link right">Login</a>
                     </li>
@@ -101,6 +101,26 @@
                 formReserva.reset();
             });
         });
+
+        
+        document.addEventListener('DOMContentLoaded', function () {
+            const user = localStorage.getItem('username');
+
+            if (user) {
+                const userNav = document.getElementById('user-nav');
+                userNav.innerHTML = `
+                    <li class="nav-lista-link right">Bem-vindo, ${user}</li>
+                    <li><a style="color: #732424;" href="#" id="logout" class="nav-lista-link right">Sair</a></li>
+                `;
+
+                const logoutButton = document.getElementById('logout');
+                logoutButton.addEventListener('click', function () {
+                    localStorage.removeItem('username');
+                    window.location.href = './index.html';
+                });
+            }
+        });
+    
     </script>
 </body>
 </html>

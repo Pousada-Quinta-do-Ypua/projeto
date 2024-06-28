@@ -58,9 +58,9 @@
             const formCadastro = document.getElementById('form-cadastro');
 
             formCadastro.addEventListener('submit', function (event) {
-                event.preventDefault(); // Evita o envio padrão do formulário
-                // Aqui você pode adicionar a lógica de cadastro (simulada)
-                // Redirecionamento para a página inicial após cadastro
+                event.preventDefault();
+                const nome = document.getElementById('nome').value;
+                localStorage.setItem('username', nome);
                 window.location.href = './index.html';
             });
         });

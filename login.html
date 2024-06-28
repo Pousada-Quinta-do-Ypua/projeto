@@ -39,7 +39,6 @@
         </div>
         <div class="login">
             <h1 class="titulo">Login</h1>
-            <!-- Formulário de login -->
             <form id="form-login">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required><br>
@@ -54,10 +53,13 @@
             const formLogin = document.getElementById('form-login');
 
             formLogin.addEventListener('submit', function (event) {
-                event.preventDefault(); // Evita o envio padrão do formulário
-                // Aqui você pode adicionar a lógica de autenticação (simulada)
-                // Redirecionamento para a página inicial após login
-                window.location.href = './index.html';
+                event.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const username = email.split('@')[0];
+                localStorage.setItem('username', username);
+                
+                window.location.href = `./index.html?user=${username}`;
             });
         });
     </script>

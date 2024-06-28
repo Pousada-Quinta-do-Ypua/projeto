@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/styles.css">
-    <link rel="stylesheet" href="caminho/para/flatpickr.min.css">
-    <script src="caminho/para/flatpickr.min.js"></script>
-    <title>Início</title>
+    <title>Home</title>
 </head>
 <body>
     <div class="container">
@@ -31,7 +27,7 @@
                         <a href="" class="nav-lista-link">Contato</a>
                     </li>
                 </ul>
-                <ul class="nav-lista right">
+                <ul class="nav-lista right" id="user-nav">
                     <li>
                         <a href="./login.html" class="nav-lista-link right">Login</a>
                     </li>
@@ -65,7 +61,6 @@
                         <li>Tamanho: 260 ft²</li>
                         <li>Camas: 2 Casal</li>
                     </ul>
-                    <br>
                     <p>
                         A partir de <br>
                         <span class="bold-upper">R$800</span>
@@ -85,7 +80,6 @@
                         <li>Tamanho: 230 ft²</li>
                         <li>Camas: 1 Casal</li>
                     </ul>
-                    <br>
                     <p>
                         A partir de <br>
                         <span class="bold-upper">R$650</span>
@@ -105,7 +99,6 @@
                         <li>Tamanho: 280 ft²</li>
                         <li>Camas: 1 King Size</li>
                     </ul>
-                    <br>
                     <p>
                         A partir de <br>
                         <span class="bold-upper">R$1000</span>
@@ -117,5 +110,25 @@
             </div>
         </div>
     </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const user = localStorage.getItem('username');
+
+            if (user) {
+                const userNav = document.getElementById('user-nav');
+                userNav.innerHTML = `
+                    <li class="nav-lista-link right">Bem-vindo, ${user}</li>
+                    <li><a style="color: #732424;" href="#" id="logout" class="nav-lista-link right">Sair</a></li>
+                `;
+
+                const logoutButton = document.getElementById('logout');
+                logoutButton.addEventListener('click', function () {
+                    localStorage.removeItem('username');
+                    window.location.href = './index.html';
+                });
+            }
+        });
+    </script>
 </body>
 </html>
