@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <title>Cadastro</title>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="assets/logo.png" alt="logo">
+            </div>
+            <nav class="nav">
+                <ul class="nav-lista left">
+                    <li>
+                        <a href="./index.html" class="nav-lista-link">Home</a>
+                    </li>
+                    <li>
+                        <a href="./acomodacoes.html" class="nav-lista-link">Acomodações</a>
+                    </li>
+                    <li>
+                        <a href="./reserva.html" class="nav-lista-link">Reserve</a>
+                    </li>
+                    <li>
+                        <a href="" class="nav-lista-link">Contato</a>
+                    </li>
+                </ul>
+                <ul class="nav-lista right">
+                    <li>
+                        <a href="./login.html" class="nav-lista-link right">Login</a>
+                    </li>
+                    <li>
+                        <a href="./cadastro.html" class="nav-lista-link right">Cadastre-se</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="cadastro">
+            <h1 class="titulo">Cadastre-se</h1>
+            <!-- Formulário de cadastro -->
+            <form id="form-cadastro">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" required>
+                <button type="submit" class="cadastro-botao">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const formCadastro = document.getElementById('form-cadastro');
+
+            formCadastro.addEventListener('submit', function (event) {
+                event.preventDefault(); // Evita o envio padrão do formulário
+                // Aqui você pode adicionar a lógica de cadastro (simulada)
+                // Redirecionamento para a página inicial após cadastro
+                window.location.href = './index.html';
+            });
+        });
+    </script>
+</body>
+</html>

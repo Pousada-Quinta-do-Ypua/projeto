@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <title>Reserva</title>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="assets/logo.png" alt="logo">
+            </div>
+            <nav class="nav">
+                <ul class="nav-lista left">
+                    <li>
+                        <a href="./index.html" class="nav-lista-link">Home</a>
+                    </li>
+                    <li>
+                        <a href="./acomodacoes.html" class="nav-lista-link">Acomodações</a>
+                    </li>
+                    <li>
+                        <a href="./reserva.html" class="nav-lista-link">Reserve</a>
+                    </li>
+                    <li>
+                        <a href="" class="nav-lista-link">Contato</a>
+                    </li>
+                </ul>
+                <ul class="nav-lista right">
+                    <li>
+                        <a href="" class="nav-lista-link right">Login</a>
+                    </li>
+                    <li>
+                        <a href="" class="nav-lista-link right">Cadastre-se</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="reserva">
+            <h1 class="titulo">Reserve sua Acomodação</h1>
+            <form id="form-reserva">
+                <div class="quarto-selecionado">
+                    <h2>Quarto Selecionado: Suíte Júnior</h2>
+                </div>
+                <div class="calendario">
+                    <label for="checkin">Data de Check-in:</label>
+                    <input type="text" id="checkin" class="calendario-input" placeholder="Selecione a data de check-in" required>
+                    <label for="checkout">Data de Check-out:</label>
+                    <input type="text" id="checkout" class="calendario-input" placeholder="Selecione a data de check-out" required>
+                </div>
+                <button type="submit" class="reserva-botao">Confirmar Reserva</button>
+            </form>
+            <div id="mensagem-reserva" class="mensagem-reserva hidden">
+                <p>Reserva feita com sucesso!</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const formReserva = document.getElementById('form-reserva');
+            const mensagemReserva = document.getElementById('mensagem-reserva');
+
+            // Configuração do calendário usando Flatpickr
+            const checkinInput = document.getElementById('checkin');
+            const checkoutInput = document.getElementById('checkout');
+
+            flatpickr(checkinInput, {
+                enableTime: false,
+                dateFormat: 'd/m/Y',
+                minDate: 'today',
+                locale: 'pt',
+                onChange: function(selectedDates, dateStr, instance) {
+                    const minCheckoutDate = selectedDates[0] || 'today';
+                    instance.set('minDate', minCheckoutDate);
+                }
+            });
+
+            flatpickr(checkoutInput, {
+                enableTime: false,
+                dateFormat: 'd/m/Y',
+                minDate: 'today',
+                locale: 'pt',
+                onChange: function(selectedDates, dateStr, instance) {
+                    const maxCheckinDate = selectedDates[0] || 'today';
+                    instance.set('maxDate', maxCheckinDate);
+                }
+            });
+
+            formReserva.addEventListener('submit', function (event) {
+                event.preventDefault(); // Evita o envio padrão do formulário
+                // Simulando confirmação de reserva (pode ser substituído por lógica real)
+                // Aqui você pode adicionar a lógica para enviar um email, por exemplo
+                setTimeout(function () {
+                    mensagemReserva.classList.remove('hidden');
+                }, 1000); // Exibe a mensagem após 1 segundo (simulação)
+
+                // Limpa os campos do formulário (opcional)
+                formReserva.reset();
+            });
+        });
+    </script>
+</body>
+</html>
